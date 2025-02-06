@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakesh & Akhila's Wedding Celebration</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
+
+        :root {
+            --primary-color: #ff69b4;
+            --secondary-color: #ff8dc7;
+            --accent-1: #ffd700;
+            --accent-2: #ff1493;
+            --accent-3: #00ffff;
+            --gradient-1: linear-gradient(45deg, #ff69b4, #ff8dc7, #ffd700);
+            --gradient-2: linear-gradient(135deg, #00ffff, #ff1493, #ffd700);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--gradient-1);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                #ff69b4, #ff8dc7, #ffd700, #00ffff, #ff1493);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatHeart 6s ease-in infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 6rem);
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: var(--accent-2);
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            padding: 1rem;
+        }
+
+        .nav.scrolled {
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-link {
+            color: var(--accent-2) !important;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-1);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--accent-2);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '💖';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .person-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .person-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+        }
+
+        .person-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .person-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .person-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-1);
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .person-card:hover img {
+            transform: scale(1.1);
+            border-color: var(--accent-2);
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-icon {
+            font-size: 3rem;
+            color: var(--accent-2);
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .event-card:hover .event-icon {
+            transform: scale(1.2);
+            color: var(--accent-1);
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .modal-header {
+            border: none;
+            text-align: center;
+            display: block;
+        }
+
+        .modal-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--accent-2);
+        }
+
+        .btn-close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        /* Photo Gallery Styles */
+        .photo-gallery {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: 0.5s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            height: 100%;
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* Love Story Styles */
+        .love-story {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5rem 0;
+        }
+
+        .story-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-item {
+            padding: 1rem;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .story-item::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: var(--accent-2);
+            left: -30px;
+            top: 0;
+        }
+
+        .story-date {
+            color: var(--accent-2);
+            font-weight: bold;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 1rem;
+                margin: 1rem;
+            }
+
+            .person-card img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .event-card {
+                margin-bottom: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg nav fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#couple">Couple</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#love-story">Our Story</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="home" class="header d-flex align-items-center">
+        <div class="floating-hearts"></div>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="names">Akhila & Rakesh</h1>
+                <p class="date">JANUARY 24, 2025</p>
+                <p class="subtitle" style="color: var(--accent-2); font-family: 'Montserrat', sans-serif;">
+                    Join us in celebrating our Wedding festival
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Couple Section -->
+    <section id="couple" class="section">
+        <div class="container">
+            <h2 class="section-title">The Happy Couple</h2>
+            <div class="row g-4">
+                <!-- Bride Section -->
+                <div class="col-md-6">
+                    <div class="person-card bride-card" data-bs-toggle="modal" data-bs-target="#brideDetailModal">
+                        <div class="card-header">
+                            <img src="/static/images/1.jpg" alt="Bride Akhila" class="img-fluid bride-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="person-name">Akhila </h3>
+                            <p class="person-role">The Bride</p>
+                            <div class="person-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Engineer</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Boston, MA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Groom Section -->
+                <div class="col-md-6">
+                    <div class="person-card groom-card" data-bs-toggle="modal" data-bs-target="#groomDetailModal">
+                        <div class="card-header">
+                            <img src="\static\images\2.jpg" alt="Groom Rakesh" class="img-fluid groom-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="person-name">Rakesh </h3>
+                            <p class="person-role">The Groom</p>
+                            <div class="person-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <span>Professor</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Seattle, WA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bride Detailed Modal -->
+    <div class="modal fade" id="brideDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Akhila </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="\static\images\3.jpg" class="img-fluid rounded" alt="Akhila Full">
+                        </div>
+                        <div class="col-md-8">
+                            <h3>About Akhila</h3>
+                            <p>A compassionate pediatrician with a heart of gold, Akhila is dedicated to making a difference in children's lives. Her passion for healing is matched only by her love for art and adventure.</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h4>Professional Life</h4>
+                                    <ul>
+                                        <li>Pediatrician at Boston Children's Hospital</li>
+                                        <li>Specializes in pediatric care and child wellness</li>
+                                        <li>Active in community health programs</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Personal Interests</h4>
+                                    <ul>
+                                        <li>Watercolor Painting</li>
+                                        <li>Mountain Hiking</li>
+                                        <li>Classical Music</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Groom Detailed Modal -->
+    <div class="modal fade" id="groomDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Rakesh </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="static\images\4.jpg" class="img-fluid rounded" alt="Rakesh Full">
+                        </div>
+                        <div class="col-md-8">
+                            <h3>About Rakesh</h3>
+                            <p>A creative software engineer with a passion for music and technology, Rakesh brings innovation and rhythm to everything he does. His adventurous spirit complements Akhila's compassionate nature.</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h4>Professional Life</h4>
+                                    <ul>
+                                        <li>Senior Software Engineer at Tech Innovations</li>
+                                        <li>Specializes in Cloud Architecture</li>
+                                        <li>Open-source contributor</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Personal Interests</h4>
+                                    <ul>
+                                        <li>Guitar Playing</li>
+                                        <li>Hiking</li>
+                                        <li>Tech Meetups</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <div class="container">
+            <h2 class="section-title">Celebration Details</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <i class="fas fa-ring event-icon"></i>
+                        <h3 style="font-family: 'Montserrat', sans-serif; color: var(--accent-2);">
+                            Wedding Ceremony
+                        </h3>
+                        <p>24-02-2025 , 10:30 AM - "Monday" </p>
+                        <p>Sri Surya convention hall</p>
+                        <p>Tangellamudi,Eluru </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <i class="fas fa-glass-cheers event-icon"></i>
+                        <h3 style="font-family: 'Montserrat', sans-serif; color: var(--accent-2);">
+                            Reception
+                        </h3>
+                        <p></p>
+                        <p>UPDATING SOON</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event-card">
+                        <i class="fas fa-utensils event-icon"></i>
+                        <h3 style="font-family: 'Montserrat', sans-serif; color: var(--accent-2);">
+                            Wedding Feast
+                        </h3>
+                        <p>24-02-2025 , "Monday"</p>
+                        <p>Afternoon 12:00 pm</p>
+                        <p>at Wedding Ceremony</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="photo-gallery">
+        <div class="container">
+            <h2 class="section-title">Our Photo Journey</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal1">
+                    <img src="static\images\5.jpg" alt="Couple Moment 1">
+                    <div class="overlay">
+                        <div class="overlay-text">Our First Date</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal2">
+                    <img src="static\images\6.jpg" alt="Couple Moment 2">
+                    <div class="overlay">
+                        <div class="overlay-text">Proposal Day</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal3">
+                    <img src="static\images\7.jpg" alt="Couple Moment 3">
+                    <div class="overlay">
+                        <div class="overlay-text">Engagement Celebration</div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal4">
+                    <img src="static\images\8.jpg" alt="Couple Moment 4">
+                    <div class="overlay">
+                        <div class="overlay-text">Pre-Wedding Shoot</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Story Section -->
+    <section id="love-story" class="love-story">
+        <div class="container">
+            <h2 class="section-title">Our Love Story</h2>
+            <div class="story-timeline">
+                <div class="story-item">
+                    <h4 class="story-date">First Meeting - 2018</h4>
+                    <p>We first met at a tech conference in San Francisco. Little did we know that a chance encounter would change our lives forever.</p>
+                </div>
+                <div class="story-item">
+                    <h4 class="story-date">First Date - 2019</h4>
+                    <p>After months of talking, we finally went on our first date. A cozy coffee shop, endless conversations, and the beginning of something magical.</p>
+                </div>
+                <div class="story-item">
+                    <h4 class="story-date">Proposal - 2023</h4>
+                    <p>Rakesh proposed during a surprise hiking trip, surrounded by the breathtaking landscapes that symbolize our journey together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal fade" id="brideModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Akhila </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <img src="/api/placeholder/300/300" class="img-fluid rounded-circle" alt="Akhila">
+                    </div>
+                    <p>Akhila is a dedicated pediatrician who loves helping children. She enjoys painting, hiking, and spending time with her family. Her infectious laugh and caring nature make her the perfect match for Rakesh.</p>
+                    <div class="row mt-3">
+                        <div class="col-4">
+                            <strong>Hometown:</strong> Boston
+                        </div>
+                        <div class="col-4">
+                            <strong>Profession:</strong> Pediatrician
+                        </div>
+                        <div class="col-4">
+                            <strong>Hobbies:</strong> Painting, Hiking
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="groomModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Rakesh </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <img src="/api/placeholder/300/300" class="img-fluid rounded-circle" alt="Rakesh">
+                    </div>
+                    <p>Rakesh is a software engineer with a passion for music. When he's not coding, you can find him playing guitar or planning adventures with Akhila. His dedication and humor have won Akhila's heart.</p>
+                    <div class="row mt-3">
+                        <div class="col-4">
+                            <strong>Hometown:</strong> Seattle
+                        </div>
+                        <div class="col-4">
+                            <strong>Profession:</strong> Software Engineer
+                        </div>
+                        <div class="col-4">
+                            <strong>Hobbies:</strong> Music, Hiking
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Modals -->
+    <!-- Photo Modals -->
+<div class="modal fade" id="photoModal1" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Our First Date</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="\static\images\5.jpg" class="img-fluid" alt="First Date">
+                <p class="mt-3">A memorable day that started our beautiful journey together.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="photoModal2" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Proposal Day</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="\static\images\6.jpg" class="img-fluid" alt="Proposal Day">
+                <p class="mt-3">The magical moment when we decided to spend our lives together.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="photoModal3" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Engagement Celebration</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="\static\images\7.jpg" class="img-fluid" alt="Engagement Celebration">
+                <p class="mt-3">Celebrating our engagement with family and friends.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="photoModal4" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Pre-Wedding Shoot</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <img src="\static\images\8.jpg" class="img-fluid" alt="Pre-Wedding Shoot">
+                <p class="mt-3">Capturing our love story before the big day.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- Similar modals for photoModal2, photoModal3, photoModal4 can be added similarly -->
+
+    <!-- Footer -->
+    <footer class="py-4 text-center" style="background: rgba(255, 255, 255, 0.9);">
+        <div class="container">
+            <p style="font-family: 'Montserrat', sans-serif; color: var(--accent-2);">
+                #AkhilaAndRakesh2025
+            </p>
+            <div class="social-links mt-3">
+                <a href="#" class="mx-2 text-dark"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#" class="mx-2 text-dark"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#" class="mx-2 text-dark"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.opacity = Math.random();
+            heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 65%)`;
+            document.querySelector('.floating-hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in elements on scroll
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section, .person-card, .event-card, .gallery-item, .story-item').forEach((el) => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

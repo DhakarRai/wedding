@@ -41,7 +41,7 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, 
-                #ff69b4, #ff8dc7, #ffd700, #00ffff, #ff1493);
+                #ff69b4,rgb(255, 141, 200),rgba(255, 217, 0, 1),rgb(0, 255, 255), #ff1493);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             z-index: -1;
@@ -180,6 +180,8 @@
             font-size: 1.5rem;
             animation: pulse 2s infinite;
         }
+
+       
 
         .person-card {
             background: white;
@@ -418,7 +420,17 @@
         }
     </style>
 </head>
-<body>
+<body>  
+
+    <audio id="background-music" autoplay loop>
+        <source src="{{ audio_url }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+   
+
+   
+
     <!-- Animated Background -->
     <div class="animated-bg"></div>
 
@@ -443,7 +455,7 @@
                         <a class="nav-link" href="#gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#love-story">Our Story</a>
+                        <a class="nav-link" href="#love-story">A Heartfelt Welcome</a>
                     </li>
                 </ul>
             </div>
@@ -455,10 +467,10 @@
         <div class="floating-hearts"></div>
         <div class="container">
             <div class="header-content">
-                <h1 class="names">Akhila & Rakesh</h1>
-                <p class="date">JANUARY 24, 2025</p>
+                <h1 class="names">Rakesh & Akhila</h1>
+                <p class="date">FEBRUARY 24, 2025</p>
                 <p class="subtitle" style="color: var(--accent-2); font-family: 'Montserrat', sans-serif;">
-                    Join us in celebrating our Wedding festival
+                    Join us in celebrating our Wedding festival ❤️
                 </p>
             </div>
         </div>
@@ -484,8 +496,9 @@
                                     <span>Engineer</span>
                                 </div>
                                 <div class="detail-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Boston, MA</span>
+                                    <i class="fas fa-hand-pointer"></i>
+
+                                    <span>"Click here</span>
                                 </div>
                             </div>
                         </div>
@@ -504,11 +517,12 @@
                             <div class="person-details">
                                 <div class="detail-item">
                                     <i class="fas fa-laptop-code"></i>
-                                    <span>Professor</span>
+                                    <span>Lecturer</span>
                                 </div>
                                 <div class="detail-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Seattle, WA</span>
+                                    <i class="fas fa-hand-pointer"></i>
+
+                                    <span>"Click here</span>
                                 </div>
                             </div>
                         </div>
@@ -533,23 +547,23 @@
                         </div>
                         <div class="col-md-8">
                             <h3>About Akhila</h3>
-                            <p>A compassionate pediatrician with a heart of gold, Akhila is dedicated to making a difference in children's lives. Her passion for healing is matched only by her love for art and adventure.</p>
+                            <p>A skilled civil engineer with a passion for  creating new ideas , Akhila is dedicated to making a lasting impact in her field. Her love for design and innovation is matched only by her adventurous spirit and warm heart.</p>
                             
                             <div class="row mt-4">
                                 <div class="col-md-6">
-                                    <h4>Professional Life</h4>
+                                    <h4>Qualifications</h4>
                                     <ul>
-                                        <li>Pediatrician at Boston Children's Hospital</li>
-                                        <li>Specializes in pediatric care and child wellness</li>
-                                        <li>Active in community health programs</li>
+                                        <li>B.Tech</li>
+                                        <li>Civil Engineer</li>
+                                        
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
                                     <h4>Personal Interests</h4>
                                     <ul>
-                                        <li>Watercolor Painting</li>
-                                        <li>Mountain Hiking</li>
-                                        <li>Classical Music</li>
+                                        <li>Travelling</li>
+                                        <li>Food lover</li>
+                                        <li>Movie lover</li>
                                     </ul>
                                 </div>
                             </div>
@@ -575,23 +589,23 @@
                         </div>
                         <div class="col-md-8">
                             <h3>About Rakesh</h3>
-                            <p>A creative software engineer with a passion for music and technology, Rakesh brings innovation and rhythm to everything he does. His adventurous spirit complements Akhila's compassionate nature.</p>
+                            <p>A dedicated lecturer with a passion for teaching and sharing knowledge, Rakesh inspires his students with enthusiasm and expertise. His love for learning and helping others is balanced by his adventurous spirit, which complements Akhila's compassionate nature.</p>
                             
                             <div class="row mt-4">
                                 <div class="col-md-6">
-                                    <h4>Professional Life</h4>
+                                    <h4>Qualifications</h4>
                                     <ul>
-                                        <li>Senior Software Engineer at Tech Innovations</li>
-                                        <li>Specializes in Cloud Architecture</li>
-                                        <li>Open-source contributor</li>
+                                        <li>Post graduate</li>
+                                        <li>M.Sc.,(Phy) , M.Sc.,(Math)</li>
+                                        <li>M.Ed.,SET</li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
                                     <h4>Personal Interests</h4>
                                     <ul>
-                                        <li>Guitar Playing</li>
-                                        <li>Hiking</li>
-                                        <li>Tech Meetups</li>
+                                        <li>Natural lover</li>
+                                        <li>Food lover</li>
+                                        <li>Playing cricket</li>
                                     </ul>
                                 </div>
                             </div>
@@ -613,19 +627,19 @@
                         <h3 style="font-family: 'Montserrat', sans-serif; color: var(--accent-2);">
                             Wedding Ceremony
                         </h3>
-                        <p>24-02-2025 , 10:30 AM - "Monday" </p>
-                        <p>Sri Surya convention hall</p>
-                        <p>Tangellamudi,Eluru </p>
+                        <p>24-02-2025 ,  "Monday" </p>
+                        <p>Morning 10:30 AM </p>
+                        <p>at Venue </p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="event-card">
+                    <div class="event-card" onclick="window.open('https://maps.app.goo.gl/Vxnhmua3v2Gi336r6', '_blank')" style="cursor: pointer;">
                         <i class="fas fa-glass-cheers event-icon"></i>
                         <h3 style="font-family: 'Montserrat', sans-serif; color: var(--accent-2);">
-                            Reception
+                            Venue
                         </h3>
                         <p></p>
-                        <p>UPDATING SOON</p>
+                        <p>Sri Surya convention hall , mammaya gari thota, Tangellamudi,Eluru  <br> 👆 Click here  </p>
                         <p></p>
                     </div>
                 </div>
@@ -647,30 +661,30 @@
     <!-- Photo Gallery Section -->
     <section id="gallery" class="photo-gallery">
         <div class="container">
-            <h2 class="section-title">Our Photo Journey</h2>
+            <h2 class="section-title">Our Photos</h2>
             <div class="gallery-grid">
                 <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal1">
                     <img src="static\images\5.jpg" alt="Couple Moment 1">
                     <div class="overlay">
-                        <div class="overlay-text">Our First Date</div>
+                        <div class="overlay-text">click here </div>
                     </div>
                 </div>
                 <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal2">
                     <img src="static\images\6.jpg" alt="Couple Moment 2">
                     <div class="overlay">
-                        <div class="overlay-text">Proposal Day</div>
+                        <div class="overlay-text">click here</div>
                     </div>
                 </div>
                 <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal3">
                     <img src="static\images\7.jpg" alt="Couple Moment 3">
                     <div class="overlay">
-                        <div class="overlay-text">Engagement Celebration</div>
+                        <div class="overlay-text">click here</div>
                     </div>
                 </div>
                 <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#photoModal4">
                     <img src="static\images\8.jpg" alt="Couple Moment 4">
                     <div class="overlay">
-                        <div class="overlay-text">Pre-Wedding Shoot</div>
+                        <div class="overlay-text">click here</div>
                     </div>
                 </div>
             </div>
@@ -680,19 +694,20 @@
     <!-- Love Story Section -->
     <section id="love-story" class="love-story">
         <div class="container">
-            <h2 class="section-title">Our Love Story</h2>
+            <h2 class="section-title">24-Feb-2025 </h2>
             <div class="story-timeline">
                 <div class="story-item">
-                    <h4 class="story-date">First Meeting - 2018</h4>
-                    <p>We first met at a tech conference in San Francisco. Little did we know that a chance encounter would change our lives forever.</p>
+                    <h4 class="story-date">Join Us</h4>
+                    <p>With heartfelt joy, we invite you to join us in celebrating and congratulating the beautiful couple as they begin their new journey together.</p>
                 </div>
                 <div class="story-item">
-                    <h4 class="story-date">First Date - 2019</h4>
-                    <p>After months of talking, we finally went on our first date. A cozy coffee shop, endless conversations, and the beginning of something magical.</p>
+                    <h4 class="story-date">Invited by</h4>
+                    <p>Peethala RajendraPrasad (late) <br> Smt Lakshmi</p>
                 </div>
                 <div class="story-item">
-                    <h4 class="story-date">Proposal - 2023</h4>
-                    <p>Rakesh proposed during a surprise hiking trip, surrounded by the breathtaking landscapes that symbolize our journey together.</p>
+                    <h4 class="story-date">Blessings and Best Wishes</h4>
+                    <p>Let's make a fuss for my mammaya wedding - Sri Suraj, Srikrithi and  <br> With the blessings and best wishes from uncles, aunts, younger brothers, younger sisters, elder brother, elder sister, brothers-in-law, sisters-in-law, cousins, and dear friends... 
+                    </p>
                 </div>
             </div>
         </div>
@@ -761,12 +776,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Our First Date</h5>
+                <h5 class="modal-title">Our New Journey</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <img src="\static\images\5.jpg" class="img-fluid" alt="First Date">
-                <p class="mt-3">A memorable day that started our beautiful journey together.</p>
+                <p class="mt-3">-------Please bless us as we start our journey together</p>
             </div>
         </div>
     </div>
@@ -776,7 +791,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Proposal Day</h5>
+                <h5 class="modal-title">Rakesh❤️Akhila</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -806,12 +821,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Pre-Wedding Shoot</h5>
+                <h5 class="modal-title">💙🧡</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <img src="\static\images\8.jpg" class="img-fluid" alt="Pre-Wedding Shoot">
-                <p class="mt-3">Capturing our love story before the big day.</p>
+                <p class="mt-3">Capturing our love  before the big day.</p>
             </div>
         </div>
     </div>
@@ -828,9 +843,9 @@
                 #AkhilaAndRakesh2025
             </p>
             <div class="social-links mt-3">
-                <a href="#" class="mx-2 text-dark"><i class="fab fa-instagram fa-2x"></i></a>
-                <a href="#" class="mx-2 text-dark"><i class="fab fa-facebook fa-2x"></i></a>
-                <a href="#" class="mx-2 text-dark"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="https://www.instagram.com/dhakarroyvinnu?igsh=dGFmeTkweWE3bXJi" class="mx-2 text-dark" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://www.facebook.com/share/18cC7FzKfL/" class="mx-2 text-dark"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="https://x.com/DHAKARRAIVINNU?t=uSizhogyiWGZ1XFHATvteQ&s=08" class="mx-2 text-dark"><i class="fab fa-twitter fa-2x"></i></a>
             </div>
         </div>
     </footer>
@@ -886,5 +901,43 @@
             observer.observe(el);
         });
     </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('background-music');
+            
+            // Set initial volume
+            audio.volume = 0.5;
+    
+            // Function to start playing
+            function playAudio() {
+                audio.play()
+                    .then(() => {
+                        console.log('Audio playing successfully');
+                    })
+                    .catch((error) => {
+                        console.log('Playback failed:', error);
+                        // Add click event listener as fallback
+                        document.addEventListener('click', function tryPlayback() {
+                            audio.play();
+                            document.removeEventListener('click', tryPlayback);
+                        }, { once: true });
+                    });
+            }
+    
+            // Try to play immediately
+            playAudio();
+    
+            // Additional fallback for mobile
+            document.addEventListener('touchstart', function tryPlayback() {
+                audio.play();
+                document.removeEventListener('touchstart', tryPlayback);
+            }, { once: true });
+        });
+    </script>
+
+    
+    
 </body>
 </html>
